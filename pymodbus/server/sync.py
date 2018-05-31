@@ -298,6 +298,7 @@ class ModbusTcpServer(socketserver.ThreadingTCPServer):
         if isinstance(identity, ModbusDeviceIdentification):
             self.control.Identity.update(identity)
 
+        self.allow_reuse_address = 1
         socketserver.ThreadingTCPServer.__init__(self,
             self.address, self.handler)
         # self._BaseServer__shutdown_request = True
